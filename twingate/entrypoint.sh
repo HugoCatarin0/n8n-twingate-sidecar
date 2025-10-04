@@ -6,8 +6,8 @@ if [ ! -f /etc/twingate/service_key.json ]; then
   exit 1
 fi
 
-# Run setup (idempotent — will say "complete" if already done)
+# Run setup once (idempotent)
 twingate setup --headless /etc/twingate/service_key.json || true
 
-# Start the client in the foreground so container keeps running
-exec twingate start --foreground
+# Start the client in the foreground (no --foreground flag in new versions)
+exec twingate start
