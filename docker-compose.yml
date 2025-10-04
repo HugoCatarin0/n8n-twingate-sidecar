@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   twingate:
-     build:
+    build:
       context: .
       dockerfile: twingate/Dockerfile
-  restart: always
-  volumes:
-    - ./service_key.json:/etc/twingate/service_key.json:ro
-  network_mode: "host"
+    restart: always
+    volumes:
+      - ./service_key.json:/etc/twingate/service_key.json:ro
+    network_mode: "host"
