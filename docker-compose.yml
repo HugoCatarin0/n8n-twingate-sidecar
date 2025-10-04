@@ -3,10 +3,12 @@ version: "3.8"
 services:
   twingate:
     build: ./twingate
-    restart: always
-    volumes:
-      - ./service_key.json:/etc/twingate/service_key.json:ro
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./service_key.json:/etc/twingate/service_key.json:ro
