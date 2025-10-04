@@ -10,4 +10,7 @@ echo "Running Twingate setup..."
 twingate setup --headless /etc/twingate/service_key.json || true
 
 echo "Starting Twingate client..."
-exec twingate start
+twingate start &
+
+# Keep container alive
+tail -f /dev/null
