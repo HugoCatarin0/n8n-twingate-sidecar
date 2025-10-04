@@ -6,8 +6,8 @@ if [ ! -f /etc/twingate/service_key.json ]; then
   exit 1
 fi
 
-# Run setup once (idempotent)
+echo "Running Twingate setup..."
 twingate setup --headless /etc/twingate/service_key.json || true
 
-# Start the client in the foreground (no --foreground flag in new versions)
+echo "Starting Twingate client..."
 exec twingate start
