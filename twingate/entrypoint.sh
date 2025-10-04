@@ -6,8 +6,8 @@ if [ ! -f /etc/twingate/service_key.json ]; then
   exit 1
 fi
 
-# Setup headless mode (idempotent)
+# Run setup (idempotent — will say "complete" if already done)
 twingate setup --headless /etc/twingate/service_key.json || true
 
-# Start the Twingate client
-exec twingate start
+# Start the client in the foreground so container keeps running
+exec twingate start --foreground
